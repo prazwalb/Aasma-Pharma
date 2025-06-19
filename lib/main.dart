@@ -1,19 +1,7 @@
-import 'package:android_std/utils/theme/theme.dart';
+import 'package:android_std/app.dart';
 import 'package:flutter/material.dart';
 
+//---------Entry point of flutter app
 void main() {
   runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      themeMode: ThemeMode.system,
-      theme: PAppTheme.lightTheme,
-      darkTheme: PAppTheme.darkTheme,
-    );
-  }
 }
