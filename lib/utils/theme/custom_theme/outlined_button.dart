@@ -4,7 +4,6 @@ class POutlinedButtonTheme {
   POutlinedButtonTheme._();
 
   ///--light theme
-
   static final lightOutlinedButtonTheme = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       elevation: 0,
@@ -21,7 +20,6 @@ class POutlinedButtonTheme {
   );
 
   ///--dark theme
-
   static final darkOutlinedButtonTheme = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       elevation: 0,

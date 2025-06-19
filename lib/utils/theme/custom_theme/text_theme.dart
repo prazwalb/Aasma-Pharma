@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class PTextTheme {
   PTextTheme._();
 
+  //customizable light txt theme
   static TextTheme lightText = TextTheme(
     headlineLarge: TextStyle().copyWith(
       fontSize: 32.0,
@@ -64,6 +65,7 @@ class PTextTheme {
     ),
   );
 
+  //customizable dark text theme
   static TextTheme darkText = TextTheme(
     headlineLarge: TextStyle().copyWith(
       fontSize: 32.0,
