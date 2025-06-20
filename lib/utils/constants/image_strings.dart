@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class PImage {
   //----- App logo
   static const String darkAppLogo = "";
