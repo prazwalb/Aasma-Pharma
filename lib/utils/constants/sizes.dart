@@ -35,4 +35,35 @@ class PSizes {
   static const double spaceBtwSections = 32;
 
   //Border Radius
+  static const double borderRadiusSm = 4.0;
+  static const double borderRadiusMd = 8.0;
+  static const double borderRadiudLg = 12.0;
+
+  //divider Height
+  static const double dividerHeight = 1.0;
+
+  //product item dimensition
+  static const double productImageSize = 120;
+  static const double productImageRadius = 16;
+  static const double productImageHeight = 160;
+
+  //input field
+  static const double inputFieldRadius = 12.0;
+  static const double spaceBtwInputField = 16;
+
+  //card size
+  static const double cardRadiusLg = 16;
+  static const double cardRadiusMd = 12;
+  static const double cardRadiusSm = 10;
+  static const double cardRadiusXs = 6;
+  static const double cardElevation = 2;
+
+  //image carousel height
+  static const double imageCarouselHeight = 200;
+
+  //loading indicator size
+  static const double loadingIndicatorSize = 36;
+
+  //gridview spacing
+  static const double grideViewSpacing = 16;
 }
