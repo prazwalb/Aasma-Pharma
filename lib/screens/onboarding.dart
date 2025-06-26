@@ -1,5 +1,4 @@
 import 'package:android_std/utils/constants/colors.dart';
-import 'package:android_std/utils/constants/enums.dart';
 import 'package:android_std/utils/constants/image_strings.dart';
 import 'package:android_std/utils/constants/sizes.dart';
 import 'package:android_std/utils/constants/text_strings.dart';
