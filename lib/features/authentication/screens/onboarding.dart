@@ -1,5 +1,6 @@
-import 'package:android_std/controllers/controllers.onbaording/onbaording_controller.dart';
+import 'package:android_std/features/authentication/controllers.onbaording/onbaording_controller.dart';
 import 'package:android_std/utils/constants/colors.dart';
+import 'package:android_std/utils/constants/enums.dart';
 import 'package:android_std/utils/constants/image_strings.dart';
 import 'package:android_std/utils/constants/sizes.dart';
 import 'package:android_std/utils/constants/text_strings.dart';
@@ -7,6 +8,7 @@ import 'package:android_std/utils/device/device_utility.dart';
 import 'package:android_std/utils/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatelessWidget {
