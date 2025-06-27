@@ -12,4 +12,10 @@ class PTexts {
       "Welcome to a World of Limitless Choices - Your Perfect Product";
   static const String onBoardingSubTitle3 =
       "Welcome to a World of Limitless Choices - Your Perfect Product";
+
+  //-- authentication heading text
+  static const String loginTitle = "Welcome back,";
+  static const String loginSubTitle = "Enter your credentials to login";
+  static const String loginEmail = "Email";
+  static const String loginPassword = "Password";
 }

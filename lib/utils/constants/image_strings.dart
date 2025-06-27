@@ -4,8 +4,8 @@ class PImage {
   static const String lightAppLogo = "assets/logos/Logo.png";
 
   //----- Social logo
-  static const String google = "";
-  static const String facebook = "";
+  static const String google = "assets/logos/google-icon.png";
+  static const String facebook = "assets/logos/facebook-icon.png";
 
   //--onBoarding images
   static const String onBoardingImage1 =
