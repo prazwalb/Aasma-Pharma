@@ -14,4 +14,6 @@ class PImage {
       "assets/images/onboarding_image/onboarding_image2.png";
   static const String onBoardingImage3 =
       "assets/images/onboarding_image/onboarding_image3.png";
+
+  static const String ani = "assets/images/new/animation.gif";
 }

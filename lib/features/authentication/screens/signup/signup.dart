@@ -1,5 +1,5 @@
-import 'package:android_std/common/widgets/form_divider.dart';
-import 'package:android_std/common/widgets/social_button.dart';
+import 'package:android_std/common/widgets/login_signup/form_divider.dart';
+import 'package:android_std/common/widgets/login_signup/social_button.dart';
 import 'package:android_std/features/authentication/screens/signup/widget/signup_form.dart';
 import 'package:android_std/utils/constants/sizes.dart';
 import 'package:android_std/utils/constants/text_strings.dart';

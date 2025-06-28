@@ -33,4 +33,16 @@ class PTexts {
   static const String termsAndCondition = "Terms and Conditions";
   static const String privacyPolicy = "Privacy Policy";
   static const String orSignUpWith = "Or Sign Up with";
+
+  static const String eContinue = "Continue";
+  static const String eResend = "Resend Email";
+
+  static const String configureEmailTitle = "Verify your email address!";
+  static const String configureEmailsubTitle =
+      "Congratulations! Your Account Awaits: Verify Your Email to Get access to a wide range of medications and expert advice from licensed pharmacists. ";
+
+  static const String yourAccountCreatedTitle =
+      "Your account successfully created";
+  static const String yourAccountCreatedsubTitle =
+      "Welcome to Your Revolutionized Pharma Services: Your Account is Created. Unleash the Joy of Ultimate Pharma Services!";
 }
