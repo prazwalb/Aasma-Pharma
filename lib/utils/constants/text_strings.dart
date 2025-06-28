@@ -28,6 +28,8 @@ class PTexts {
   static const String signupPhonenumber = "Phone Number";
   static const String firstname = "First Name";
   static const String lastname = "Last Name";
+  static const String submit = 'Submit';
+  static const String done = 'Done';
 
   static const String iAgreeto = "I Agree to";
   static const String termsAndCondition = "Terms and Conditions";
@@ -45,4 +47,12 @@ class PTexts {
       "Your account successfully created";
   static const String yourAccountCreatedsubTitle =
       "Welcome to Your Revolutionized Pharma Services: Your Account is Created. Unleash the Joy of Ultimate Pharma Services!";
+
+  static const String forgetPasswordTitle = "Forget password";
+  static const String forgetPasswordsubTitle =
+      "Don't worry sometimes people can forget too,enter your email and we will send you a password reset link.";
+
+  static const String changeYourPasswordTitle = "Password Reset Email sent";
+  static const String changeYourPasswordsubTitle =
+      "Your Account Security is Our Priority! We've Sent You a Secure Link to Safely Change You Password and Keep Your Account Proctected.";
 }

@@ -1,3 +1,4 @@
+import 'package:android_std/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:android_std/features/authentication/screens/signup/signup.dart';
 import 'package:android_std/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,10 @@ class Login_Form extends StatelessWidget {
                 ),
 
                 // forget password
-                TextButton(onPressed: () {}, child: Text("Forget Password")),
+                TextButton(
+                  onPressed: () => Get.to(ForgetPassword()),
+                  child: Text("Forget Password"),
+                ),
               ],
             ),
             const SizedBox(height: PSizes.spaceBtwInputField),
