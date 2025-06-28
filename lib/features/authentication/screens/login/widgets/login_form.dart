@@ -1,5 +1,8 @@
+import 'package:android_std/features/authentication/screens/signup/signup.dart';
 import 'package:android_std/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
+import 'package:iconsax/iconsax.dart';
 
 class Login_Form extends StatelessWidget {
   const Login_Form({super.key});
@@ -14,7 +17,7 @@ class Login_Form extends StatelessWidget {
             //email
             TextFormField(
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.arrow_right),
+                prefixIcon: Icon(Iconsax.direct),
                 labelText: "Enter Your Email",
               ),
             ),
@@ -23,12 +26,12 @@ class Login_Form extends StatelessWidget {
             //password
             TextFormField(
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.password),
+                prefixIcon: Icon(Iconsax.password_check),
                 labelText: "Enter Your Password",
-                suffixIcon: Icon(Icons.remove_red_eye),
+                suffixIcon: Icon(Iconsax.eye_slash),
               ),
             ),
-            // SizedBox(height: PSizes.spaceBtwInputField),
+            SizedBox(height: PSizes.spaceBtwInputField),
 
             //remember me and forget password
             Row(
@@ -36,13 +39,17 @@ class Login_Form extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Checkbox(value: true, onChanged: (value) {}),
+                    SizedBox(
+                      height: 24,
+                      width: 24,
+                      child: Checkbox(value: true, onChanged: (value) {}),
+                    ),
                     const Text('Remember me'),
                   ],
                 ),
 
                 // forget password
-                TextButton(onPressed: () {}, child: Text("Forget Passwprd")),
+                TextButton(onPressed: () {}, child: Text("Forget Password")),
               ],
             ),
             const SizedBox(height: PSizes.spaceBtwInputField),
@@ -50,14 +57,14 @@ class Login_Form extends StatelessWidget {
             //sign in button
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton(onPressed: () {}, child: Text("Sign_In")),
+              child: ElevatedButton(onPressed: () {}, child: Text("Sign In")),
             ),
             const SizedBox(height: PSizes.spaceBtwItems),
             //create account button
             SizedBox(
               width: double.infinity,
               child: OutlinedButton(
-                onPressed: () {},
+                onPressed: () => Get.to(SignupScreen()),
                 child: Text("Create Account"),
               ),
             ),

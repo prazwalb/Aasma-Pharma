@@ -16,6 +16,21 @@ class PTexts {
   //-- authentication heading text
   static const String loginTitle = "Welcome back,";
   static const String loginSubTitle = "Enter your credentials to login";
-  static const String loginEmail = "Email";
+  static const String loginEmail = "E-mail";
   static const String loginPassword = "Password";
+
+  static const String signupTitle = "Let's create your account";
+  static const String signupSubTitle = "Enter your details to create account";
+  static const String email = "E-mail";
+  static const String password = "Password";
+  static const String signupConfirmPassword = "Confirm Password";
+  static const String username = "Username";
+  static const String signupPhonenumber = "Phone Number";
+  static const String firstname = "First Name";
+  static const String lastname = "Last Name";
+
+  static const String iAgreeto = "I Agree to";
+  static const String termsAndCondition = "Terms and Conditions";
+  static const String privacyPolicy = "Privacy Policy";
+  static const String orSignUpWith = "Or Sign Up with";
 }
