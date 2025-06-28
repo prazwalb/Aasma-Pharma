@@ -13,11 +13,14 @@ class Login_Header extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image(
-          height: 150,
-          image: AssetImage(dark ? PImage.lightAppLogo : PImage.darkAppLogo),
-          fit: BoxFit.cover,
+        SizedBox(
+          height: PSizes.logoSize,
+          child: Image(
+            image: AssetImage(dark ? PImage.lightAppLogo : PImage.darkAppLogo),
+            fit: BoxFit.scaleDown,
+          ),
         ),
+        SizedBox(height: PSizes.spaceBtwItems),
         Text(
           PTexts.loginTitle,
           style: Theme.of(context).textTheme.headlineMedium,
