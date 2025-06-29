@@ -4,8 +4,8 @@ class PColors {
   PColors._();
 
   // App Basic Color
-  static const Color primaryColor = Color(0xffAAC4FF);
-  static const Color secondaryColor = Color(0xff4b68ff);
+  static const Color primaryColor = Color(0xff4b68ff);
+  static const Color secondaryColor = Color(0xffAAC4FF);
   static const Color accent = Color(0xffb0c7ff);
 
   //gradient colors

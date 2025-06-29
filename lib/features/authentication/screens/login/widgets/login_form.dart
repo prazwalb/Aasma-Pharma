@@ -1,5 +1,6 @@
 import 'package:android_std/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:android_std/features/authentication/screens/signup/signup.dart';
+import 'package:android_std/navigation_menu.dart';
 import 'package:android_std/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
@@ -61,7 +62,10 @@ class Login_Form extends StatelessWidget {
             //sign in button
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton(onPressed: () {}, child: Text("Sign In")),
+              child: ElevatedButton(
+                onPressed: () => Get.to(NavigationMenu()),
+                child: Text("Sign In"),
+              ),
             ),
             const SizedBox(height: PSizes.spaceBtwItems),
             //create account button

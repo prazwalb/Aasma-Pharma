@@ -12,14 +12,6 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       themeMode: ThemeMode.system,
       theme: PAppTheme.lightTheme,
-
-      // ThemeData(
-      //   brightness: Brightness.light,
-      //   colorScheme: ColorScheme.fromSeed(
-      //     seedColor: Colors.deepPurple.shade300,
-      //   ),
-      // useMaterial3: true,
-      // ),
       darkTheme: PAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
       home: OnboardingScreen(),

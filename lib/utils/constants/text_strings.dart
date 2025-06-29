@@ -30,9 +30,10 @@ class PTexts {
   static const String lastname = "Last Name";
   static const String submit = 'Submit';
   static const String done = 'Done';
+  static const String home = "Home";
 
   static const String iAgreeto = "I Agree to";
-  static const String termsAndCondition = "Terms and Conditions";
+  static const String termsAndCondition = "Terms od Use";
   static const String privacyPolicy = "Privacy Policy";
   static const String orSignUpWith = "Or Sign Up with";
 
