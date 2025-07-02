@@ -1,4 +1,6 @@
+import 'package:android_std/features/personalization/screens/settings.dart';
 import 'package:android_std/features/shop/home/home.dart';
+import 'package:android_std/features/shop/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -37,9 +39,9 @@ class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
 
   final screens = [
-    HomeScreen(),
+    PharmaApp(),
     Container(color: Colors.pink),
     Container(color: Colors.purple),
-    Container(color: Colors.red),
+    SettingsScreen(),
   ];
 }
