@@ -63,6 +63,19 @@ const productSchema = new mongoose.Schema({
     minlength: [3, 'Product name must be at least 3 characters long.'],
     maxlength: [100, 'Product name cannot exceed 100 characters.'],
   },
+  netweight:{
+    type:Number,
+    required:[true,'Product weight is required'],
+    minlength:1
+  },
+  category:{
+    type:String,
+    required:true,
+    enum:{
+      values:['Personal Care','Feminine Hygiene','Baby','Home Care','Medical Equipment','First Aid','narcotics','antibiotics','gastrol','Gastrointestinal','Diabetic','Others'],
+      message:"Please enter a correct data order"
+    }
+  },
   manufacturer: { // Corresponds to your "Manufacturer" field
     type: String,
     required: [true, 'Manufacturer is required.'],
