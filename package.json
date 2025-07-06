@@ -1,0 +1,27 @@
+{
+  "name": "aansa_pharma",
+  "version": "1.0.0",
+  "description": "Mobile App for Pharmacy",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prazwalb/Aasma-Pharma.git"
+  },
+  "author": "Sanjay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prazwalb/Aasma-Pharma/issues"
+  },
+  "homepage": "https://github.com/prazwalb/Aasma-Pharma#readme",
+  "dependencies": {
+    "dotenv": "^17.0.1",
+    "express": "^5.1.0",
+    "mongoose": "^8.16.1",
+    "nodemon": "^3.1.10",
+    "validator": "^13.15.15"
+  }
+}
