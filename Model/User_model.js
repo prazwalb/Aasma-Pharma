@@ -136,152 +136,15 @@ const  pharmacistSchema =mongooose.Schema({
     minlength: [5, 'Pharmacy license number must be at least 5 characters long.'],
     maxlength: [50, 'Pharmacy license number cannot exceed 50 characters.']
   }
-})
+});
 
 // creating a schema for porduct
 
 
 
-const mongoose = require('mongoose');
-
-const productSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, 'Product name is required.'],
-    trim: true,
-    minlength: [3, 'Product name must be at least 3 characters long.'],
-    maxlength: [100, 'Product name cannot exceed 100 characters.'],
-  },
-  productId: {
-    type: String,
-    required: [true, 'Product ID is required.'],
-    unique: true,
-    trim: true,
-    minlength: [3, 'Product ID must be at least 3 characters long.'],
-    maxlength: [50, 'Product ID cannot exceed 50 characters.'],
-    match: [/^[a-zA-Z0-9\-]+$/, 'Product ID can only contain alphanumeric characters and hyphens.']
-  },
-  manufacturer: {
-    type: String,
-    required: [true, 'Manufacturer is required.'],
-    trim: true,
-    minlength: [2, 'Manufacturer name must be at least 2 characters long.'],
-    maxlength: [100, 'Manufacturer name cannot exceed 100 characters.']
-  },
-  description: {
-    type: String,
-    required: false,
-    trim: true,
-    maxlength: [500, 'Description cannot exceed 500 characters.']
-  },
-  quantity: {
-    type: Number,
-    required: [true, 'Quantity is required.'],
-    min: [2, 'Quantity must be greater than 1.'], // Changed to min: 2
-    validate: {
-      validator: Number.isInteger,
-      message: 'Quantity must be a whole number.'
-    }
-  },
-  price: {
-    type: Number,
-    required: [true, 'Price is required.'],
-    min: [0, 'Price cannot be negative.']
-  },
-  // --- New and Modified Date Fields ---
-
-  manufacturedDate: {
-    type: Date,
-    required: [true, 'Manufactured date is required.'],
-    validate: {
-      validator: function(v) {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0); // Normalize today to start of day
-        return v <= today; // Manufactured date must be today or in the past
-      },
-      message: 'Manufactured date cannot be in the future.'
-    }
-  },
-  expiringDate: {
-    type: Date,
-    required: false, // Keeping it optional as some items might not expire (e.g., devices)
-                     // However, its presence and value will influence 'availability'
-    validate: {
-      validator: function(v) {
-        // This validator ONLY checks that IF a date is provided, it's valid.
-        // The "must be less than today" part for availability is handled in the pre-save hook.
-        if (v) {
-            // Here, we just ensure it's a valid date object if provided
-            return v instanceof Date && !isNaN(v.getTime());
-        }
-        return true; // Valid if no date is provided
-      },
-      message: 'Invalid expiring date.'
-    }
-  },
-  // --- Availability now calculated and not directly set ---
-  // We'll set this via a pre-save hook based on quantity and expiringDate
-  availability: {
-    type: Boolean,
-    default: false, // Default to false, will be calculated
-    required: true // Still explicitly present, but calculated
-  },
-  // --- End New and Modified Date Fields ---
-
-  image: {
-    type: String,
-    required: false,
-    trim: true,
-    match: [
-      /^(?!.*[\\/]).*\.(jpg|jpeg|png|gif|svg|webp)$/i,
-      'Invalid image filename. Must be a valid image file (e.g., .jpg, .png) and should not contain path separators.'
-    ],
-    minlength: [5, 'Image filename must be at least 5 characters long.'],
-    maxlength: [100, 'Image filename cannot exceed 100 characters.']
-  },
-}, {
-  timestamps: true // Adds createdAt and updatedAt timestamps automatically
-});
-
-// --- Pre-save hook to calculate availability ---
-productSchema.pre('save', function(next) {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0); // Normalize today to start of day
-
-  let isAvailable = false;
-
-  // 1. Check quantity: Must be greater than 1
-  const hasSufficientQuantity = this.quantity > 0;
-
-  // 2. Check expiry date:
-  //    If expiringDate is provided, it must be in the future (relative to today).
-  //    If expiringDate is NOT provided, it's considered non-expiring and thus available (if quantity allows).
-  const isNotExpired = !this.expiringDate || (this.expiringDate.getTime() > today.getTime());
-
-  // Determine availability
-  isAvailable = hasSufficientQuantity && isNotExpired;
-
-  this.availability = isAvailable; // Set the calculated availability
-
-  // Additional validation for expiringDate relative to manufacturedDate
-  if (this.manufacturedDate && this.expiringDate && this.expiringDate.getTime() <= this.manufacturedDate.getTime()) {
-    return next(new Error('Expiring date must be after manufactured date.'));
-  }
-
-  // If you also want to enforce "expiringDate must be less than today"
-  // to *mark it as invalid or expired immediately*, you can add another check here.
-  // However, the current logic assumes "less than today" means "expired" for availability purposes.
-  // If you literally mean "the user must input an expiring date that is already in the past"
-  // then the 'expiringDate' field itself would fail the 'isNotExpired' check and set availability to false.
-
-  next();
-});
-
-
 const transactionSchema = new mongoose.Schema({
   // Reference to the Product being transacted
   productId: {
-    // ref: 'Product', // This links to your Product model
     type: String,
     required: [true, 'Product ID is required for the transaction.']
   },
@@ -351,5 +214,5 @@ transactionSchema.pre('save', function(next) {
 
 exports.user=mongoose.model('Patient',patientSchema);
 exports.pharmacist=mongoose.model('Pharmacist',pharmacistSchema);
-exports.Product = mongoose.model('Product', productSchema);
+// exports.Product = mongoose.model('Product', productSchema);
 exports.Transaction = mongoose.model('Transaction', transactionSchema);
