@@ -80,6 +80,11 @@ const productSchema = new mongoose.Schema({
     minlength: [5, 'Image filename must be at least 5 characters long.'],
     maxlength: [100, 'Image filename cannot exceed 100 characters.']
   },
+  category:{
+    type:String,
+    required:[true,'Category must be defined'],
+    trim:true
+  },
   price: { // Price is a top-level field (was missing from your last JSON example, but good to keep)
     type: Number,
     required: [true, 'Price is required.'],

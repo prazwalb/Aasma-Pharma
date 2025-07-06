@@ -1,4 +1,5 @@
 const mongoose=require('mongoose')
+const bcrypt = require('bcryptjs');
 const validator=require('validator')
 
 // mongoose schema for patient/user
@@ -37,7 +38,14 @@ const patientSchema=new mongoose.Schema({
       'Password must be between 8 and 20 characters, and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.'
     ]
   },
-
+  gender:{
+    type:String,
+    required:[true,'Gender must required field'],
+     enum:{
+            values:['Male','Female','Others'], // <-- ERROR: Should be 'values'
+            message: '{VALUE} is not a valid gender.'
+        }
+  },
   address: {
     type: String,
     required: true, // Make this optional based on your needs
@@ -70,7 +78,7 @@ const patientSchema=new mongoose.Schema({
   }],
   bloodGroup: {
     type: String,
-    required: false, // Make this optional
+    required: true, // Make this optional
     enum: {
       values: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'],
       message: '"{VALUE}" is not a valid blood group. Valid options are A+, A-, B+, B-, AB+, AB-, O+, O-.'
@@ -79,10 +87,10 @@ const patientSchema=new mongoose.Schema({
 })
 
 // mongoose schema for Medical store
-const  pharmacistSchema =mongooose.Schema({
+const  pharmacistSchema =mongoose.Schema({
     username:{
         type:String,
-        required:true,
+        required:[true,'username is required'],
         unique:true,
        match: [
   /^(?!.*[_.]{2})(?!.*[_.]$)[a-zA-Z][a-zA-Z0-9._]{4,19}$/,
@@ -99,6 +107,15 @@ const  pharmacistSchema =mongooose.Schema({
       'Please enter a valid full name'
     ]
     },
+    gender:{
+    type:String,
+    required:[true,'Gender must required field'],
+    lowercase:true,
+     enum:{
+            values:['male','female','others'], // <-- ERROR: Should be 'values'
+            message: '{VALUE} is not a valid gender.'
+        }
+  },
     email: {
     type: String,
     required: true,
@@ -110,11 +127,11 @@ const  pharmacistSchema =mongooose.Schema({
   password: {
     type: String,
     required: true,
-
     match: [
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,20}$/,
       'Password must be between 8 and 20 characters, and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.'
-    ]
+    ],
+    select: false 
   },
 
   address: {
@@ -138,8 +155,27 @@ const  pharmacistSchema =mongooose.Schema({
   }
 });
 
-// creating a schema for porduct
 
+
+// creating a schema for porduct
+pharmacistSchema.pre('save', async function(next) {
+  // Only hash the password if it has been modified (or is new)
+  if (!this.isModified('password')) {
+    return next();
+  }
+  // Hash the password with a salt (e.g., 10 rounds)
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+  next();
+});
+
+
+// --- Mongoose Method: Compare password for login ---
+pharmacistSchema.methods.comparePassword = async function(candidatePassword) {
+  // 'this.password' here refers to the hashed password stored in the database
+  // We explicitly select the password in the login query (see route below)
+  return await bcrypt.compare(candidatePassword, this.password);
+};
 
 
 const transactionSchema = new mongoose.Schema({
