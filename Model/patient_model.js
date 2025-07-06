@@ -58,7 +58,7 @@ const patientSchema=new mongoose.Schema({
     type: Number,
     required: true, // Make this optional based on your needs
     min: [50, 'Height must be at least 50 cm.'], // Realistic minimum height
-    max: [250, 'Height cannot exceed 250 cm.'], // Realistic maximum height
+    max: [290, 'Height cannot exceed 250 cm.'], // Realistic maximum height
     validate: {
       validator: Number.isInteger, // Ensure it's an integer
       message: 'Height must be a whole number in centimeters.'
@@ -66,18 +66,21 @@ const patientSchema=new mongoose.Schema({
   },
   medicalConditions: [{ // An array of strings for multiple conditions
     type: String,
+    required:false,
     trim: true,
     minlength: [2, 'Medical condition must be at least 2 characters long.'],
     maxlength: [100, 'Medical condition cannot exceed 100 characters.']
   }],
   allergies: [{ // An array of strings for multiple allergies
     type: String,
+    required:false,
     trim: true,
     minlength: [2, 'Allergy must be at least 2 characters long.'],
     maxlength: [100, 'Allergy cannot exceed 100 characters.']
   }],
   bloodGroup: {
     type: String,
+    uppercase:true,
     required: true, // Make this optional
     enum: {
       values: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'],
@@ -88,7 +91,7 @@ const patientSchema=new mongoose.Schema({
 
 
 
-patientSchemaSchema.pre('save', async function(next) {
+patientSchema.pre('save', async function(next) {
   // Only hash the password if it has been modified (or is new)
   if (!this.isModified('password')) {
     return next();
@@ -107,4 +110,4 @@ patientSchema.methods.comparePassword = async function(candidatePassword) {
   return await bcrypt.compare(candidatePassword, this.password);
 };
 
-exports.patient=mongoose.model('Patient',patientSchema);
+exports.Patient=mongoose.model('Patient',patientSchema);
