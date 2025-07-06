@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
 
+const mongoose=require('mongoose')
+const validator=require('validator')
 // 1. Define the Schema for the Embedded Batch/Inventory Document
 const batchSchema = new mongoose.Schema({
   quantity: {
@@ -147,6 +148,4 @@ productSchema.pre('save', function(next) {
   next(); // Continue with the save operation
 });
 
-const Product = mongoose.model('Product', productSchema);
-
-module.exports = Product;
+exports.Product = mongoose.model('Product', productSchema);

@@ -1,5 +1,5 @@
 const express=require('express')
-const {pharmacist}=require('../Model/User_model')
+const {pharmacist}=require('../Model/pharmacist_model')
 const jwt = require('jsonwebtoken');
 
 const generateToken =async (id) => {
