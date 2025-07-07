@@ -1,0 +1,10 @@
+{
+    "productID":"ID",
+    "productName":"Name",
+    "netweight":"weight",
+    "category":"category",
+    "manufacturer":"manufacturer",
+    "image":"image",
+    "price":"price",
+    "quantity":"subtotal of all quantity from embedded document"
+}
