@@ -45,7 +45,7 @@ const transactionSchema = new mongoose.Schema({
   // --- END TRANSACTION DATE FIELD ---
   totalAmount: {
     type: Number,
-    required: [true, 'Total amount is required.'],
+    // required: [true, 'Total amount is required.'],
     min: [0, 'Total amount cannot be negative.']
   },
   status: {
