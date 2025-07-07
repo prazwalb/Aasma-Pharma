@@ -59,3 +59,58 @@ exports.searchProductByName = async (req, res) => {
     res.status(500).json({ message: 'Server error', error: err.message });
   }
 };
+
+
+// list the data through category
+
+exports.getProductsByCategory = async (req, res) => {
+  const {category} = req.params
+
+  if (!category) {
+    return res.status(400).json({ message: 'Category query parameter is required.' });
+  }
+
+  try {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Normalize time
+
+    const products = await Product.find({ category });
+
+    if (!products.length) {
+      return res.status(404).json({ message: 'No products found for this category.' });
+    }
+
+    const formatted = products.map(product => {
+      let totalValidQuantity = 0;
+
+      for (const batch of product.batches) {
+        const notExpired = batch.expiringDate && new Date(batch.expiringDate) > today;
+        const isAvailable = batch.availability === true;
+
+        if (isAvailable || notExpired) {
+          totalValidQuantity += batch.quantity;
+        }
+      }
+
+      return {
+        productID: product.productId,
+        productName: product.productName,
+        netweight: product.netweight,
+        category: product.category,
+        manufacturer: product.manufacturer,
+        image: product.image,
+        price: product.price,
+        quantity: totalValidQuantity
+      };
+    });
+
+    res.status(200).json({
+      message: 'Products found',
+      count: formatted.length,
+      products: formatted
+    });
+  } catch (err) {
+    console.error('Error fetching products:', err);
+    res.status(500).json({ message: 'Server error', error: err.message });
+  }
+};
