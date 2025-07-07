@@ -1,0 +1,70 @@
+[
+  {
+    "id": "1",
+    "name": "First Aid",
+    "type": "general",
+    "image": "https://via.placeholder.com/150x150/ff4444/ffffff?text=First+Aid",
+    "description": "Essential first aid supplies",
+    "products": [
+      {
+        "id": "1",
+        "name": "Bandages",
+        "image": "https://via.placeholder.com/150x150/ff4444/ffffff?text=Bandages",
+        "price": 12.99,
+        "description": "Adhesive bandages pack",
+        "categoryId": "1"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Narcotics and Poisonous",
+    "type": "medicine",
+    "image": "https://via.placeholder.com/150x150/ff0000/ffffff?text=Narcotics",
+    "description": "Controlled substances requiring special handling",
+    "products": [
+      {
+        "id": "7",
+        "name": "Controlled Medicine A",
+        "image": "https://via.placeholder.com/150x150/ff0000/ffffff?text=Medicine+A",
+        "price": 89.99,
+        "description": "Prescription required",
+        "categoryId": "4"
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Prescriptive",
+    "type": "medicine",
+    "image": "https://via.placeholder.com/150x150/ffa500/ffffff?text=Prescriptive",
+    "description": "Prescription medicines",
+    "products": [
+      {
+        "id": "9",
+        "name": "Antibiotic",
+        "image": "https://via.placeholder.com/150x150/ffa500/ffffff?text=Antibiotic",
+        "price": 45.99,
+        "description": "Prescription antibiotic",
+        "categoryId": "5"
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Non-Prescriptive",
+    "type": "medicine",
+    "image": "https://via.placeholder.com/150x150/00aa00/ffffff?text=Non-Prescriptive",
+    "description": "Over-the-counter medicines",
+    "products": [
+      {
+        "id": "11",
+        "name": "Paracetamol",
+        "image": "https://via.placeholder.com/150x150/00aa00/ffffff?text=Paracetamol",
+        "price": 5.99,
+        "description": "Pain relief tablets",
+        "categoryId": "6"
+      }
+    ]
+  }
+]

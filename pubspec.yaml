@@ -1,0 +1,82 @@
+name: android_std
+description: "A new Flutter project."
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+
+#*************  PACKAGES   **************#
+dependencies:
+  flutter:
+    sdk: flutter
+
+ #UTILITY PACKAGES
+  http: ^1.1.0
+  intl: ^0.20.2
+  logger: ^2.0.1
+  url_launcher:  ^6.1.12
+
+#ICONS
+  iconsax: ^0.0.8
+  cupertino_icons: ^1.0.8
+
+
+#STATE MANAGEMENT
+  get: ^4.6.5
+  get_storage: ^2.1.1
+  flutter_animate: ^4.5.2
+  go_router: ^16.0.0
+  provider: ^6.1.5
+  flutter_native_splash: ^2.4.6
+  flutter_svg: ^2.2.0
+  smooth_page_indicator: ^1.2.1
+
+  #PRODUCT SPECIFIC
+
+
+  #-----------------   ./PACKAGES END  ------------------------#
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^6.0.0
+
+
+flutter:
+
+  uses-material-design: true
+
+
+  #--------------- LOCAL ASSETS  --------------#
+
+  assets:
+    - assets/logos/
+    - assets/icons/brands/
+    - assets/images/onboarding_image/
+    - assets/images/new/
+
+
+  #---------- LOCAL FONTS  ----------------#
+
+  fonts:
+    - family: Poopins
+      fonts:
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 800
+        - asset: assets/fonts/Poppins-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Poppins-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Poppins-Italic.ttf
+          style: italic
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-MediumItalic.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
