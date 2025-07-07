@@ -1,8 +1,11 @@
 const express=require('express')
 const prod_route=express.Router()
-const {addNewProduct,addProduct}=require('../Controller/product')
+const {addNewProduct,addProduct,updateProductDetails}=require('../Controller/product')
 
-prod_route.route('/AddNew').post(addNewProduct)
-prod_route.route('/AddProduct/:productId').post(addProduct)
+prod_route.route('/Product/New').post(addNewProduct)
+prod_route.route('/Product/:productId')
+                            .post(addProduct)
+                            .put(updateProductDetails)
+
 
 module.exports=prod_route

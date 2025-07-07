@@ -91,3 +91,62 @@ exports.addProduct=async(req,res)=>{
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
+
+// update product
+// productName,productWeight,manufacturer,price,category
+
+exports.updateProductDetails = async (req, res) => {
+  const { productId } = req.params;
+  const updateFields = req.body;
+
+  try {
+    // Define which fields are allowed to update
+    const allowedFields = ['productName', 'netweight', 'manufacturer', 'price', 'category'];
+
+    // Filter only valid keys provided by the user
+    const filteredUpdate = {};
+    for (const field of allowedFields) {
+      if (updateFields[field] !== undefined) {
+        filteredUpdate[field] = updateFields[field];
+      }
+    }
+
+    // If no valid field is provided
+    if (Object.keys(filteredUpdate).length === 0) {
+      return res.status(400).json({
+        message: 'No valid fields provided to update.'
+      });
+    }
+
+    const updatedProduct = await Product.findOneAndUpdate(
+      { productId },
+      filteredUpdate,
+      {
+        new: true,          // return the updated document
+        runValidators: true // enforce schema validations
+      }
+    );
+
+    if (!updatedProduct) {
+      return res.status(404).json({ message: 'Product not found.' });
+    }
+
+    res.status(200).json({
+      message: 'Product updated successfully.',
+      product: updatedProduct
+    });
+
+  } catch (error) {
+    console.error('Update error:', error);
+
+    if (error.name === 'ValidationError') {
+      const errors = {};
+      for (let field in error.errors) {
+        errors[field] = error.errors[field].message;
+      }
+      return res.status(400).json({ message: 'Validation failed.', errors });
+    }
+
+    res.status(500).json({ message: 'Server error.', error: error.message });
+  }
+};
