@@ -45,6 +45,7 @@ model Medicine {
   pharmacy     Pharmacy        @relation(fields: [pharmacyId], references: [id])
   stock        Int
   price        Float
+  imageUrl     String?
   deleteStatus Boolean         @default(false) // Soft delete flag
   createdAt    DateTime        @default(now())
   updatedAt    DateTime        @updatedAt
