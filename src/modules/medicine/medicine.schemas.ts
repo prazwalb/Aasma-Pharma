@@ -30,6 +30,7 @@ export const updateMedicineSchema = z.object({
     .number()
     .nonnegative("Price must be a non-negative number")
     .optional(),
+  imageUrl: z.string().url("Invalid URL"),
 });
 
 // Type definitions

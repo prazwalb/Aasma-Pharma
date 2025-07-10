@@ -7,11 +7,26 @@ import {
   deleteMedicine,
 } from "./medicine.service";
 import { CreateMedicineInput, UpdateMedicineInput } from "./medicine.schemas";
+import multer from "multer";
+import path from "path";
+
+
+// Multer configuration for file upload
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
+export const upload = multer({ storage });
 
 // Create a new medicine
 export const createMedicineHandler = async (req: Request, res: Response) => {
   try {
     const data = req.body as CreateMedicineInput;
+    const imageUrl = req.file ? `/Medicine_uploads/${req.file.filename}` : undefined;
     const medicine = await createMedicine(data);
     res.status(201).json(medicine);
   } catch (error) {

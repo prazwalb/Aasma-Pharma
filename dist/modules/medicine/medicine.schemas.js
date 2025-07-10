@@ -12,6 +12,7 @@ exports.createMedicineSchema = zod_1.z.object({
         .positive("Pharmacy ID must be a positive integer"),
     stock: zod_1.z.number().int().nonnegative("Stock must be a non-negative integer"),
     price: zod_1.z.number().nonnegative("Price must be a non-negative number"),
+    
 });
 // Schema for updating a medicine
 exports.updateMedicineSchema = zod_1.z.object({

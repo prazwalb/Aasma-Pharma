@@ -36,6 +36,7 @@ CREATE TABLE "Medicine" (
     "pharmacyId" INTEGER NOT NULL,
     "stock" INTEGER NOT NULL,
     "price" DOUBLE PRECISION NOT NULL,
+    "imageUrl" TEXT,
     "deleteStatus" BOOLEAN NOT NULL DEFAULT false,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
