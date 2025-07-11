@@ -10,6 +10,7 @@ export const createMedicineSchema = z.object({
     .positive("Pharmacy ID must be a positive integer"),
   stock: z.number().int().nonnegative("Stock must be a non-negative integer"),
   price: z.number().nonnegative("Price must be a non-negative number"),
+  // imageUrl: z.string().url("Invalid URL").optional(),
 });
 
 // Schema for updating a medicine
@@ -30,7 +31,7 @@ export const updateMedicineSchema = z.object({
     .number()
     .nonnegative("Price must be a non-negative number")
     .optional(),
-  imageUrl: z.string().url("Invalid URL"),
+    // imageUrl: z.string().url("Invalid URL").optional(),
 });
 
 // Type definitions
